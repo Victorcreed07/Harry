@@ -1,0 +1,224 @@
+Code:
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form</title> // Some bootstrap links
+	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width ,initial-scale=1,shrink-to-fit=no">
+	<script src="https://kit.fontawesome.com/6f94d30cd9.js" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <style type="text/css"> // adding animations to header
+ 	header { 
+    animation: fadeInAnimation ease 5s ;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; 
+
+} 
+  
+@keyframes fadeInAnimation { 
+    0% { opacity: 0;}
+     
+    20% {  opacity: 0.2; }
+      
+     40% {  opacity: 0.4; }
+     60% {  opacity: 0.6; }
+     80% {  opacity: 0.8; }
+     100% {  opacity: 0.8; }
+} 
+body {          //Adding background image
+  background-image: url('https://i.pinimg.com/originals/ad/1a/c8/ad1ac8f1c2f242d248651240a14996fe.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+.foorm
+{
+	color: white;
+
+}
+input{
+  width: 50%;
+  padding: 12px 20px;
+  margin-left: 8px ;
+  box-sizing: border-box;
+  border:none;
+  outline: none;
+}
+
+input:focus {
+  background-color: lightblue;
+}
+p
+{
+	font-family: 'Syne Mono', monospace;
+	font-size: 20px;
+}
+.slider
+{
+	width: 50%;
+	opacity: 0.7;
+}
+.slidecontainer
+{
+	width:50%;
+}
+.slider:hover {
+  opacity: 1;
+}
+#leftt
+{
+	position: relative;
+	left:-100px;
+}
+ </style>
+
+
+ 
+  
+</head> //Creating a form
+<header>
+	<div class="jumbotron">
+		<div class="container">
+			
+			<h1 style="color:purple;">Welcome to Hogwarts</h1>
+
+		</div>
+	</div>
+</header>
+
+<body>
+	<div class="row foorm">
+		<div class="col-12 offset-1 col-sm-4">
+			<form action="happy.html" onsubmit="return validateForm();" required>
+				<p>Name:</p>
+				<p style="color:black;"><input type="text" id="name" name="name"placeholder="name" size=""></p>
+				<fieldset>
+				 <p>Sex:</p>
+				<div class="radio">
+  					<label><input type="radio" name="optradio" checked>Male</label>
+				</div>
+				<div class="radio">
+  					<label><input type="radio" name="optradio">Female</label>
+				</div>
+				<div class="radio">
+  					<label><input type="radio" name="optradio">Queer</label>
+				</div>
+			
+				<p>DOB:</p>
+				<p style="color:black;"><input type="date" name="name"placeholder="name" size=""></p>
+				<p>Secret code:</p>
+				<p style="color:black;"><input  type="password" name="name" id="pass"placeholder="pass" size=""></p>
+			
+			
+		</div>
+		<div class="col-12 offset-1 col-sm-4">
+			
+				
+					<p>Tell us who you are?</p>
+				<div class="dropdown">
+    			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Bloodstatus<span class="caret"></span></button>
+   				 <ul class="dropdown-menu">
+     				 <li class="active"><a href="#">Pureblood</a></li>
+     				 <li><a href="#">half-blood</a></li>
+     				 <li><a href="#">Muggle-born</a></li>
+     				 <li><a href="#">Squib</a></li>
+    			</ul>
+ 				 </div>
+ 				 <br>
+				 <p>Year of Registration</p>
+				 <div class="slidecontainer">
+  					<input type="range" min="1" max="8" value="5" class="slider" id="myRange">
+ 				 <p style="color: blue;">Value: <span style="color: red;" id="demo"></span></p>
+				</div>
+				<p>Email:</p>
+				<p style="color:black;"><input type="email" id="email"name="email"placeholder="email" size=""></p>
+				<p>Registered House</p>
+				<p style="color:black;"><input type="text" id="house" name="house"placeholder="eg.Slytherin" size=""></p>
+
+			
+				
+			
+			
+		</div>
+		<div class="col-12 offset-1 col-sm-4">
+			<p>About you</p>
+			<label for="comment">Who am I:</label>
+  			<textarea class="form-control" rows="5" id="comment"></textarea>
+  			<p id="leftt"><input  type="checkbox" name="check" required></p>
+  			
+  			<p>I hereby swear that I am not a imposter and the details herewith provided is true and authentic</p>
+  			<br>
+  			<br>
+  			<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+		</div>
+	</div>
+</form> // Checking the input validity using regular expression
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
+function validateForm()
+ {
+ 	var name=document.getElementById("name").value;
+var email=document.getElementById("email").value;
+var house=document.getElementById("house").value;
+var pass=document.getElementById("pass").value;
+var about =document.getElementById("comment").value;
+var name1 = new RegExp("[A-Z][a-z]*");
+var about1 = new RegExp("^.{1,50}$")
+var house1  = new RegExp("[A-Z][a-z]*");
+var email1 = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+var pass1 = new RegExp(/^[A-Za-z]\w{7,14}$/);
+   var res = name1.test(name);
+   var ras = email1.test(email);
+   var rus = house1.test(house);
+   var ris = pass1.test(pass);
+   var ros = about1.test(about);
+   if(res != true) 
+   {
+   	alert(res);
+    alert("First letter of first name should be caps");
+    return false;
+}
+
+
+	else if(ris != true)
+	{
+    alert("Invalid code");
+    return false;
+  }
+	else if(ras != true) {
+    alert("Invalid email id");
+    return false;
+  }
+	
+  else if(rus != true){
+    alert("House name shouls start with cap");
+    return false;
+
+}
+else if(ros != true){
+    alert("Didnt meet requirments");
+    return false;
+
+}
+}
+
+
+
+</script>
+
+</body>
+</html>
